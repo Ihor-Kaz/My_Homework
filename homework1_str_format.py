@@ -1,3 +1,4 @@
+# Lesson01 Task01.
 # we have norway text in old style formatting
 # re-write the same text as:
 # #1 string with format() call
@@ -6,17 +7,20 @@
 # to check your new created python module for possible linter errors
 # try to run code from pycharm/command line
 
-name1, name2, name3 = 'ø', 'å', 'Æ'
-print(('Automatisering akselererer %syeblikket ' +
-       'da roboter vil erobre planeten v%sr. (%s)'
-       ) % (name1, name2, name3),
-      )
-print(('Automatisering akselererer {0}yeblikket ' +
-       'da roboter vil erobre ' +
-       'planeten v{1}r. ({2})'
-       ).format(name1, name2, name3),
-      )
-print((f'Automatisering akselererer {name1}yeblikket ' +
-       f'da roboter vil erobre planeten v{name2}r. ({name3})'
-       ),
-      )
+# norway_text = 'Automatisering akselererer %syeblikket da roboter
+#                vil erobre planeten v%sr. (%s)' % ('ø', 'å', 'Æ')
+
+norway_text = ('Automatisering akselererer %syeblikket da roboter vil'
+               ' erobre planeten v%sr. (%s)' % ('ø', 'å', 'Æ')
+               )
+print(norway_text)
+
+format_norway_text = ('Automatisering akselererer {0}yeblikket da roboter vil'
+                      ' erobre planeten v{1}r. ({2})'.format('ø', 'å', 'Æ')
+                      )
+print(format_norway_text)
+
+f_string_norway_text = (f'Automatisering akselererer {"ø"}yeblikket da roboter'
+                        f' vil erobre planeten v{"å"}r. ({"Æ"})'
+                        )
+print(f_string_norway_text)
