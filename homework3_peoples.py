@@ -1,4 +1,5 @@
-"""Home-task3.
+"""
+Home-task3.
 
 Description:
     You have list of tuples.
@@ -14,20 +15,22 @@ Description:
 
         3.1print it as small table.
 
-    Example:
-------------------
+Example:
+__________________
 | sex    | count |
-------------------
+__________________
 |  female |  11  |
 |   male  |  23  |
-------------------
+__________________
 
     advice: female and male calculation can be done vs flat list
     or you can find your own approach ;)
 """
 from operator import itemgetter
+import itertools
 
 SEP_NUM = 27
+ALIGN = 10
 people = [
     ('Alice', 32, 100, 'Johnson', 'female'),
     ('Bob', 41, 200, 'Smith', 'male'),
@@ -82,14 +85,14 @@ print(people_new)
 
 # 3. calculate total numbers of "female"  and "male" in "new_people" list
 
-flat_people = [item for sublist in people_new for item in sublist]
+flat_people = list(itertools.chain.from_iterable(people_new))
 
 female_count = flat_people.count('female')
 male_count = flat_people.count('male')
 
 print('-' * SEP_NUM)
-print(f'| {"sex":^10} | {"count":^10} |')
+print(f'| {"sex":^{ALIGN}} | {"count":^{ALIGN}} |')
 print('-' * SEP_NUM)
-print(f'| {"female":^10} | {female_count:^10} |')
-print(f'| {"male":^10} | {male_count:^10} |')
+print(f'| {"female":^{ALIGN}} | {female_count:^{ALIGN}} |')
+print(f'| {"male":^{ALIGN}} | {male_count:^{ALIGN}} |')
 print('-' * SEP_NUM)
