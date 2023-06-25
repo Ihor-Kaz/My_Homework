@@ -11,6 +11,7 @@ Description:
 
 SEP_NUM = 61
 ALIGN = 12
+NUMBER = 5
 
 car_data = {
     'Mercedes': ('silver', 2019, 1.8, 'sedan', 50000),
@@ -54,14 +55,15 @@ car_data = {
     'Nissan Titan': ('silver', 2018, 5.6, 'pickup', 35000),
 }
 search_criteria = (2017, 1.6, 36000)
+year, eng_vol, price = search_criteria
 
 filtered_car = []
 
 # filter cars by search_criteria
 for brand, criteria in car_data.items():
-    if criteria[1] >= search_criteria[0]:
-        if criteria[2] >= search_criteria[1]:
-            if criteria[4] <= search_criteria[2]:
+    if criteria[1] >= year:
+        if criteria[2] >= eng_vol:
+            if criteria[4] <= price:
                 filtered_car.append((brand, criteria))
 
 # sort filtered cars by price ascending
@@ -75,7 +77,7 @@ print(f'| {"brand":^{ALIGN}} | {"year":^{ALIGN}} '
 print('-' * SEP_NUM)
 
 # print five first found elements
-for brand, criteria in filtered_car[0:5]:
+for brand, criteria in filtered_car[0:NUMBER]:
     print(f'| {brand:^{ALIGN}} | {criteria[1]:^{ALIGN}} '
           f'| {criteria[2]:^{ALIGN}} | {criteria[4]:^{ALIGN}} |')
 print('-' * SEP_NUM)
