@@ -23,17 +23,16 @@ task:
 
 l1 = [2, 4, 6, 8, 10]
 l2 = [1, 2, 3]
+default = 0
 
-len_l1 = len(l1)
-len_l2 = len(l2)
+# create dicts where key = indx and val = element from the list
+d1 = dict(enumerate(l1))
+d2 = dict(enumerate(l2))
 
-if len_l1 >= len_l2:
-    difference = len_l1 - len_l2
-    l2 += [0] * difference
-    list_target = [(l1[itm], l2[itm]) for itm in range(len_l1)]
-else:
-    difference = len_l2 - len_l1
-    l1 += [0] * difference
-    list_target = [(l1[itm], l2[itm]) for itm in range(len_l2)]
+# determine the longest dict by index (create set of dicts' union by keys)
+s1 = set(d1.keys() | d2.keys())
 
-print(list_target)
+# create list with tuples
+l3 = [(d1.get(key, default), d2.get(key, default)) for key in s1]
+
+print(l3)
