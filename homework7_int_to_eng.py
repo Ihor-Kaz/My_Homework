@@ -11,26 +11,29 @@ Description:
     100 <= num <= 999
 """
 
-digits = ['', 'One', 'Two', 'Three', 'Four',
-          'Five', 'Six', 'Seven', 'Eight', 'Nine']
-tens = ['', 'Ten', 'Twenty', 'Thirty', 'Forty', 'Fifty',
-        'Sixty', 'Seventy', 'Eighty', 'Ninety']
-teen_numbers = ['Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen',
-                'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen']
+digits = {0: '', 1: 'One', 2: 'Two', 3: 'Three', 4: 'Four',
+          5: 'Five', 6: 'Six', 7: 'Seven', 8: 'Eight', 9: 'Nine'}
+
+tens = {1: 'Ten', 2: 'Twenty', 3: 'Thirty', 4: 'Forty',
+        5: 'Fifty', 6: 'Sixty', 7: 'Seventy', 8: 'Eighty', 9: 'Ninety'}
+
+teen_numbers = {1: 'Eleven', 2: 'Twelve', 3: 'Thirteen',
+                4: 'Fourteen', 5: 'Fifteen', 6: 'Sixteen', 7: 'Seventeen',
+                8: 'Eighteen', 9: 'Nineteen'}
 
 numbers = int(input('Please, enter 3 digits between 100 and 999: '))
 
-# Convert hundreds to word
+# Split into hundreds, tens and digits
 input_hundreds = numbers // 100
-words = f'{digits[input_hundreds]} Hundred'
-
-# Convert tens and one digit to words
 input_tens = (numbers % 100) // 10
 input_digit = (numbers % 10)
+
+# Convert hundreds, tens and one digit to words
+words = f'{digits[input_hundreds]} Hundred'
 if input_tens == 0:
     words += f' {digits[input_digit]}'
 elif input_tens == 1:
-    words += f' and {teen_numbers[input_digit]}'
+    words += f' {teen_numbers[input_digit]}'
 else:
     words += f' {tens[input_tens]} {digits[input_digit]}'
 
