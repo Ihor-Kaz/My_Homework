@@ -16,20 +16,20 @@ Description:
 
 l1 = [-7, 1, 2, 0, 3, 12, -24, 5, -1, 6]
 
-# create a list with negative nums replaced to positive one
-converted = []
-for num in l1:
-    if num < 0:
-        num = num * -1
-        converted.append(num)
-
-# merge the original list and the converted one
-merged = l1 + converted
+# create a list where each element is squared
+converted = [num**2 for num in l1]
 
 # sort list
-sorted_list = sorted(merged, reverse=True)
+sorted_list = sorted(converted, reverse=True)
 
-# take 3 max int and multiplication them
-result = sorted_list[0] * sorted_list[1] * sorted_list[2]
+# create new list with elements = squared element from original list
+new_list = []
+for el in sorted_list:
+    for num in l1:
+        if num**2 == el:
+            new_list.append(num)
 
-print(f'Max value = "{result}". Nums are: {sorted_list[:3]}')
+# take first 3 int and multiplication them
+result = new_list[0] * new_list[1] * new_list[2]
+
+print(f'Max value = "{result}". Nums are: {new_list[:3]}')
