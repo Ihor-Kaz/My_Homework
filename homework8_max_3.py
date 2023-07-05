@@ -16,20 +16,14 @@ Description:
 
 l1 = [-7, 1, 2, 0, 3, 12, -24, 5, -1, 6]
 
-# create a list where each element is squared
-converted = [num**2 for num in l1]
+# create a dict where key = multiplication and value = (a, b, c)
+d = {}
+for a in range(len(l1)):
+    for b in range(a + 1, len(l1)):
+        for c in range(b + 1, len(l1)):
+            multiplication = l1[a] * l1[b] * l1[c]
+            d.update({multiplication: (l1[a], l1[b], l1[c])})
 
-# sort list
-sorted_list = sorted(converted, reverse=True)
-
-# create new list with elements = squared element from original list
-new_list = []
-for el in sorted_list:
-    for num in l1:
-        if num**2 == el:
-            new_list.append(num)
-
-# take first 3 int and multiplication them
-result = new_list[0] * new_list[1] * new_list[2]
-
-print(f'Max value = "{result}". Nums are: {new_list[:3]}')
+# take a max from created dict
+maximum = max(d)
+print(f'Max value = "{maximum}". Nums are: {d.get(maximum)}')
