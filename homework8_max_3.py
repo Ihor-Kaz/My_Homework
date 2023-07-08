@@ -16,7 +16,24 @@ Description:
 
 l1 = [-7, 1, 2, 0, 3, 12, -24, 5, -1, 6]
 
+# Complexity = (O(1) + O(1) + O(1))*2 = O(1)
+# sort list
+
+l2 = sorted(l1)
+
+# find maximum multiplication
+
+max1 = l2[0] * l2[1] * l2[-1]
+max2 = l2[-1] * l2[-2] * l2[-3]
+
+if max1 >= max2:
+    print(f'Max value = "{max1}". Nums are: {l2[0], l2[1], l2[-1]}')
+else:
+    print(f'Max value = "{max2}". Nums are: {l2[-1], l2[-2], l2[-3]}')
+
+# Correct solution. But complexity = O(n^3)
 # create a dict where key = multiplication and value = (a, b, c)
+
 d = {}
 for a in range(len(l1)):
     for b in range(a + 1, len(l1)):
