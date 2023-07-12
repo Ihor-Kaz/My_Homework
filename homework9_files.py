@@ -24,16 +24,8 @@ output_file = 'output.txt'
 
 # open input file in read more
 
-try:
-    fh = open(input_file)
+with open(input_file) as fh:
     l1 = fh.read()
-    print(f'reading from {input_file} is completed successfully')
-except Exception as g_exc:
-    print(g_exc)
-finally:
-    print(f'file {input_file} is closed')
-    if fh:
-        fh.close()
 
 # find characters and their positions inside the 'input' file
 
@@ -44,13 +36,5 @@ print(result)
 
 # create output file in write mode and write result into it
 
-try:
-    fh = open(output_file, 'w')
+with open(output_file, 'w') as fh:
     fh.write(result)
-    print(f'writing to {output_file} is completed successfully')
-except Exception as g_exc:
-    print(g_exc)
-finally:
-    print(f'file {output_file} is closed')
-    if fh:
-        fh.close()
