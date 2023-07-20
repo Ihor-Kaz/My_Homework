@@ -23,11 +23,8 @@ def get_sum(target_list):
         total
     """
     total = 0
-    for el in range(len(target_list)):
-        if type(target_list[el]) == list:
-            total += get_sum(target_list[el])
-        else:
-            total += target_list[el]
+    for el in target_list:
+        total += get_sum(el) if type(el) == list else el
     return total
 
 
