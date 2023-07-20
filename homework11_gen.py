@@ -14,28 +14,24 @@ Description:
 """
 
 
-def chunk_generator(range_value, chunk_size):
+def chunks_generator(range_value, chunks_size):
     """
     Generate chunked list according to entered range value and chunk size.
 
     Args:
         range_value (int):  Limit for the list to be chunked
-        chunk_size (int): The chunk size
-
+        chunks_size (int): The chunk size
     Yields:
-        sliced_list[el:el+chunk_size]: sliced list with [start:end] positions
-
+        list(range_value[:chunks_size]): list only for chunk
     Returns:
         None
     """
-    sliced_list = list(range(range_value))
-#                   start, stop, step
-    for el in range(0, len(sliced_list), chunk_size):
-        yield sliced_list[el:el + chunk_size]
+    while range_value:
+        yield list(range_value[:chunks_size])
+        range_value = range_value[chunks_size:]
 
 
 range_value = int(input('Please, enter range value: '))
-chunk_size = int(input('Please, enter chunk size: '))
+chunks_size = int(input('Please, enter chunk size: '))
 
-for chunk in chunk_generator(range_value, chunk_size):
-    print(chunk)
+print(*list(chunks_generator(range(range_value), chunks_size)), sep='\n')
